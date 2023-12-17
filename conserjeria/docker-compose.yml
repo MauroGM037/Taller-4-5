@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  conserjeria:
+    build: .
+    ports:
+      - "7070:7070"
+      - "50123:50123"
+    volumes:
+      - ./Application.yaml:/app/Application.yaml
+    environment:
+      - JAVA_TOOL_OPTIONS=-Xmx256m
+    command: ["java", "-jar", "conserjeria.jar", "--spring.config.location=file:./Application.yaml"]
